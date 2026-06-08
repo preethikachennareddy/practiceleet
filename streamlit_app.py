@@ -106,7 +106,7 @@ CODE_STARTERS = {
 }
 
 # --- Gemini client ---
-GEMINI_MODEL = "gemini-2.0-flash-lite"  # fast + cheap; swap to "gemini-1.5-pro" for harder problems
+GEMINI_MODEL = "gemini-2.0-flash"  # fast + cheap; swap to "gemini-1.5-pro" for harder problems
 
 def _get_api_key():
     return (
