@@ -622,7 +622,7 @@ def render_interview():
                 with st.spinner("Generating your interview feedback..."):
                     raw = call_claude(
                         sys,
-                        [{"role": "user", "content": f"Conversation:\n{conv}\n\nFinal code:\n{code or '(no code submitted)'}"]},
+                        [{"role": "user", "content": f"Conversation:\n{conv}\n\nFinal code:\n{code or '(no code submitted)'}"}],
                         max_tokens=1400,
                     )
                 try:
