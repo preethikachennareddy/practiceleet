@@ -106,7 +106,7 @@ CODE_STARTERS = {
 }
 
 # --- Gemini client ---
-GEMINI_MODEL = "gemini-2.5-flash"  # fast + cheap; swap to "gemini-1.5-pro" for harder problems
+GEMINI_MODEL = "gemini-2.0-flash"  # fast + cheap; swap to "gemini-1.5-pro" for harder problems
 
 def _get_api_key():
     return (
@@ -520,8 +520,7 @@ def render_interview():
     with bar_cols[0]:
         diff_color = {"Easy": "green", "Medium": "orange", "Hard": "red"}[difficulty]
         st.markdown(
-            f"{mode['emoji']} **{company}** &nbsp;-&nbsp; "
-            f":{diff_color}[{difficulty}] &nbsp;-&nbsp; `{topic}` &nbsp;-&nbsp; `{language}`",
+            f"**{company}** - :{diff_color}[{difficulty}] - `{topic}` - `{language}`",
             unsafe_allow_html=False,
         )
     with bar_cols[1]:
@@ -543,19 +542,33 @@ def render_interview():
 
         # Display chat (skip seed message)
         display = [m for m in st.session_state.messages if m["content"] != "Begin the interview."]
-        for msg in display:
-            if msg["role"] == "assistant":
-                st.markdown(
-                    f'<div class="bubble-label">Interviewer</div>'
-                    f'<div class="ai-bubble">{msg["content"]}</div>',
-                    unsafe_allow_html=True,
-                )
-            else:
-                st.markdown(
-                    f'<div class="bubble-label" style="text-align:right">You</div>'
-                    f'<div class="user-bubble">{msg["content"]}</div>',
-                    unsafe_allow_html=True,
-                )
+
+        if not display:
+            st.warning("No question loaded yet. Click below to load the problem.")
+            if st.button("Load question", use_container_width=True):
+                cfg = st.session_state.config
+                sys_p = opening_prompt(cfg["company"], cfg["level"], cfg["topic"], cfg["difficulty"])
+                with st.spinner("Loading your interview question..."):
+                    reply = call_claude(sys_p, [{"role": "user", "content": "Begin the interview."}], max_tokens=1200)
+                st.session_state.messages = [
+                    {"role": "user", "content": "Begin the interview."},
+                    {"role": "assistant", "content": reply},
+                ]
+                st.rerun()
+        else:
+            for msg in display:
+                if msg["role"] == "assistant":
+                    st.markdown(
+                        f'<div class="bubble-label">Interviewer</div>'
+                        f'<div class="ai-bubble">{msg["content"]}</div>',
+                        unsafe_allow_html=True,
+                    )
+                else:
+                    st.markdown(
+                        f'<div class="bubble-label" style="text-align:right">You</div>'
+                        f'<div class="user-bubble">{msg["content"]}</div>',
+                        unsafe_allow_html=True,
+                    )
 
         st.markdown("---")
 
