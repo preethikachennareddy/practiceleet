@@ -1,6 +1,18 @@
-# PracticeLeet - AI Mock Interview Coach
+<div align="center">
 
-A fully AI-powered technical interview simulator. Pick your target company, level, topic, and difficulty - then face a real mock interview with an AI interviewer that asks clarifying questions, gives hints on request, evaluates your code, and delivers a detailed post-interview scorecard.
+# PracticeLeet
+
+**AI-powered mock technical interview coach for Amazon, Google, Meta, Microsoft, and Apple**
+
+[![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)](https://python.org)
+[![Gemini](https://img.shields.io/badge/Gemini-2.0-4285F4?logo=google&logoColor=white)](https://aistudio.google.com)
+[![Streamlit](https://img.shields.io/badge/Live%20Demo-Streamlit-FF4B4B?logo=streamlit&logoColor=white)](https://practiceleet-preethika.streamlit.app)
+[![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)](https://react.dev)
+[![License](https://img.shields.io/badge/License-MIT-2ecc71)](LICENSE)
+
+### [View Live Demo](https://practiceleet-preethika.streamlit.app)
+
+</div>
 
 ---
 
@@ -17,7 +29,7 @@ A fully AI-powered technical interview simulator. Pick your target company, leve
 ## Tech Stack
 
 - **Frontend**: React 18
-- **AI**: Anthropic Claude API (claude-sonnet-4)
+- **AI**: Google Gemini API (gemini-2.0-flash-lite)
 - **Storage**: localStorage (upgrade to Supabase/PostgreSQL for multi-device)
 - **Styling**: Pure CSS (no framework needed)
 
@@ -29,8 +41,8 @@ The `streamlit_app.py` file is a self-contained single-file version - great for 
 
 ### Run locally
 ```bash
-pip install streamlit anthropic
-export ANTHROPIC_API_KEY=sk-ant-...
+pip install streamlit google-generativeai
+export GEMINI_API_KEY=your-gemini-key-here
 streamlit run streamlit_app.py
 ```
 
@@ -40,7 +52,7 @@ streamlit run streamlit_app.py
 3. Set `streamlit_app.py` as the main file
 4. Under **Advanced settings -> Secrets**, add:
    ```toml
-   ANTHROPIC_API_KEY = "sk-ant-your-key-here"
+   GEMINI_API_KEY = "your-gemini-key-here"
    ```
 5. Deploy - your app gets a public URL instantly
 
@@ -65,7 +77,7 @@ npm install
 
 ```bash
 cp .env.example .env
-# Edit .env and add your key from https://console.anthropic.com
+# Edit .env and add your key from https://aistudio.google.com/app/apikey
 ```
 
 ### 4. Run
@@ -104,30 +116,3 @@ src/
 ```
 
 ---
-
-## Environment Variables
-
-| Variable | Description |
-|---|---|
-| `REACT_APP_ANTHROPIC_API_KEY` | Your Anthropic API key |
-
-> **Security note**: This app calls the Anthropic API directly from the browser. For production, proxy API calls through your own backend so the key is never exposed to clients.
-
----
-
-## Roadmap
-
-- [ ] Voice mock interview (Web Speech API)
-- [ ] Resume-based question selection
-- [ ] Hint ladder with increasing specificity
-- [ ] Streak tracker
-- [ ] Weak-topic dashboard with spaced repetition
-- [ ] Replay past attempts
-- [ ] Backend + auth (Supabase)
-- [ ] Docker sandbox for real code execution
-
----
-
-## License
-
-MIT
