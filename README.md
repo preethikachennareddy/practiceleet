@@ -1,18 +1,20 @@
 <div align="center">
-
+   
 # PracticeLeet
-
+ 
 **AI-powered mock technical interview coach for Amazon, Google, Meta, Microsoft, and Apple**
-
+ 
 [![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)](https://python.org)
-[![Gemini](https://img.shields.io/badge/Gemini-2.0-4285F4?logo=google&logoColor=white)](https://aistudio.google.com)
-[![Streamlit](https://img.shields.io/badge/Live%20Demo-Streamlit-FF4B4B?logo=streamlit&logoColor=white)](https://practiceleet-preethika.streamlit.app)
+[![Gemini](https://img.shields.io/badge/Gemini-2.0--flash--lite-4285F4?logo=google&logoColor=white)](https://aistudio.google.com)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.32-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io)
 [![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)](https://react.dev)
-[![License](https://img.shields.io/badge/License-MIT-2ecc71)](LICENSE)
-
+[![google-generativeai](https://img.shields.io/badge/google--generativeai-0.8-4285F4?logo=google&logoColor=white)](https://pypi.org/project/google-generativeai)
+[![CSS Modules](https://img.shields.io/badge/CSS-Modules-264de4?logo=css3&logoColor=white)](https://github.com/css-modules/css-modules)
+ 
 ### [View Live Demo](https://practiceleet-preethika.streamlit.app)
-
+ 
 </div>
+---
 
 ---
 
